@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <h2>Directores</h2>
+  <button *ngIf="auth.esAdmin()" class="btn btn-primary mb-3" (click)="nuevo()">Nuevo Director</button>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nombres</th>
+        <th>Estado</th>
+        <th *ngIf="auth.esAdmin()">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let director of directores">
+        <td>{{ director.nombres }}</td>
+        <td>{{ director.estado ? 'Activo' : 'Inactivo' }}</td>
+        <td *ngIf="auth.esAdmin()">
+          <button class="btn btn-warning btn-sm" (click)="editar(director.id!)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminar(director.id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

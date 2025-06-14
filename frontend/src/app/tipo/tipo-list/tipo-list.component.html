@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <h2>Tipos</h2>
+  <button *ngIf="auth.esAdmin()" class="btn btn-primary mb-3" (click)="nuevo()">Nuevo Tipo</button>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th *ngIf="auth.esAdmin()">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tipo of tipos">
+        <td>{{ tipo.nombre }}</td>
+        <td>{{ tipo.descripcion }}</td>
+        <td *ngIf="auth.esAdmin()">
+          <button class="btn btn-warning btn-sm" (click)="editar(tipo.id!)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminar(tipo.id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

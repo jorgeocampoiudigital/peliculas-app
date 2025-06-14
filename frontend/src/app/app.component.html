@@ -1,0 +1,41 @@
+<div *ngIf="mensajeAlerta$ | async as mensaje" class="alert alert-warning text-center" role="alert">
+  {{ mensaje }}
+</div>
+
+<nav *ngIf="auth.estaAutenticado()" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/media">🎬 Peliculas App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <button class="btn btn-outline-light btn-sm" (click)="logout()">Salir</button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/media" routerLinkActive="active">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/genero" routerLinkActive="active">Géneros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/director" routerLinkActive="active">Directores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/productora" routerLinkActive="active">Productoras</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tipo" routerLinkActive="active">Tipos</a>
+        </li>
+        <li class="nav-item" *ngIf="auth.esAdmin()">
+          <a class="nav-link" routerLink="/admin-usuarios" routerLinkActive="active">Usuarios</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>
+

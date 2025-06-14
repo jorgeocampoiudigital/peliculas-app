@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <h2>{{ id ? 'Editar' : 'Nueva' }} Producción</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Serial</label>
+      <input class="form-control" formControlName="serial" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Título</label>
+      <input class="form-control" formControlName="titulo" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Sinopsis</label>
+      <textarea class="form-control" formControlName="sinopsis"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">URL</label>
+      <input class="form-control" formControlName="url" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Imagen</label>
+      <input class="form-control" formControlName="imagen" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Año de Estreno</label>
+      <input type="number" class="form-control" formControlName="anio_estreno" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Género</label>
+      <select class="form-select" formControlName="genero_id">
+        <option *ngFor="let g of generos" [value]="g.id">{{ g.nombre }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Director</label>
+      <select class="form-select" formControlName="director_id">
+        <option *ngFor="let d of directores" [value]="d.id">{{ d.nombres }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Productora</label>
+      <select class="form-select" formControlName="productora_id">
+        <option *ngFor="let p of productoras" [value]="p.id">{{ p.nombre }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Tipo</label>
+      <select class="form-select" formControlName="tipo_id">
+        <option *ngFor="let t of tipos" [value]="t.id">{{ t.nombre }}</option>
+      </select>
+    </div>
+
+    <button class="btn btn-success" type="submit">Guardar</button>
+  </form>
+</div>

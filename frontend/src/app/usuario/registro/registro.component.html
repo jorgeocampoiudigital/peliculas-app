@@ -1,0 +1,63 @@
+<div class="min-vh-100 d-flex justify-content-center align-items-center">
+  <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+    <h3 class="text-center mb-4">📝 Registro de Usuario</h3>
+
+    <form (ngSubmit)="registrar()">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          id="nombre"
+          class="form-control"
+          [(ngModel)]="usuario.nombre"
+          name="nombre"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input
+          id="email"
+          type="email"
+          class="form-control"
+          [(ngModel)]="usuario.email"
+          name="email"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          [(ngModel)]="usuario.password"
+          name="password"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="rol" class="form-label">Rol</label>
+        <select
+          id="rol"
+          class="form-select"
+          [(ngModel)]="usuario.rol"
+          name="rol"
+          required
+        >
+          <option value="docente">Docente</option>
+          <!-- <option value="administrador">Administrador</option> -->
+        </select>
+      </div>
+
+      <button class="btn btn-success w-100" type="submit">Registrar</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <span>¿Ya tienes una cuenta?</span>
+      <a routerLink="/usuario/login">Iniciar sesión</a>
+    </div>
+  </div>
+</div>

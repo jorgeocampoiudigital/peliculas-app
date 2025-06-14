@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Catálogo de Producciones</h2>
+  <button *ngIf="auth.esAdmin()" class="btn btn-primary mb-4" (click)="nuevo()">Nueva Producción</button>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <div class="col" *ngFor="let m of mediaList">
+      <div class="card h-100 shadow-sm">
+        <img
+          [src]="m.imagen || 'https://via.placeholder.com/300x400?text=Sin+Imagen'"
+          class="card-img-top"
+          alt="Portada de {{ m.titulo }}"
+          style="height: 300px; object-fit: cover;"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ m.titulo }}</h5>
+          <p class="card-text">
+            <strong>Año:</strong> {{ m.anio_estreno }}<br />
+            <strong>Tipo:</strong> {{ m.tipo_nombre }}<br />
+            <strong>Género:</strong> {{ m.genero_nombre }}
+          </p>
+        </div>
+        <div *ngIf="auth.esAdmin()" class="card-footer d-flex justify-content-between">
+          <button class="btn btn-warning btn-sm" (click)="editar(m.id)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminar(m.id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

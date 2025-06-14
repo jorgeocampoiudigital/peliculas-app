@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2>Géneros</h2>
+  <button *ngIf="auth.esAdmin()" class="btn btn-primary mb-3" (click)="nuevo()">Nuevo Género</button>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Estado</th>
+        <th>Descripción</th>
+        <th *ngIf="auth.esAdmin()">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let genero of generos">
+        <td>{{ genero.nombre }}</td>
+        <td>{{ genero.estado ? 'Activo' : 'Inactivo' }}</td>
+        <td>{{ genero.descripcion }}</td>
+        <td *ngIf="auth.esAdmin()">
+          <button class="btn btn-sm btn-warning" (click)="editar(genero.id!)">Editar</button>
+          <button class="btn btn-sm btn-danger" (click)="eliminar(genero.id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
